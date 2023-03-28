@@ -1,8 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-import getCharacters from '../services/api';
+import axios from 'axios';
 
 const App = () => {
+  const BASE_URL = 'https://swapi.dev/api';
+
+  const [data, setData] = useState([]);
+
+  async function getCharacters() {
+    try {
+      const response = await axios.get(`${BASE_URL}/people`);
+      setData(response.data.results); // Збереження отриманих даних у масиві стану
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   useEffect(() => {
     getCharacters();
   }, []);
@@ -12,8 +25,8 @@ const App = () => {
       <Text style={styles.title}>This is the starwars API</Text>
       <View>
         <FlatList
-          // data={data}
-          keyExtractor={({ id }) => id}
+          data={data} // Використання масиву зі стану для відображення даних
+          keyExtractor={({ name }) => name.toString()} // Використання toString(), оскільки id - це число
           renderItem={({ item }) => (
             <Text>
               {item.name}, {item.gender}

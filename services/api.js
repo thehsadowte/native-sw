@@ -1,15 +1,14 @@
 import axios from 'axios';
 
+// // const axios = require('axios');
 const BASE_URL = 'https://swapi.dev/api';
 
-// const axios = require('axios');
 async function getCharacters() {
   try {
     const response = await axios.get(`${BASE_URL}/people`);
-    console.log(response);
+    setData(response.data.results); // Збереження отриманих даних у масиві стану
   } catch (error) {
     console.error(error);
   }
 }
-
 export default getCharacters;
