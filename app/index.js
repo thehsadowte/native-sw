@@ -1,10 +1,26 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
+import getCharacters from '../services/api';
 
 const App = () => {
+  useEffect(() => {
+    getCharacters();
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>This is the starwars</Text>
+      <Text style={styles.title}>This is the starwars API</Text>
+      <View>
+        <FlatList
+          // data={data}
+          keyExtractor={({ id }) => id}
+          renderItem={({ item }) => (
+            <Text>
+              {item.name}, {item.gender}
+            </Text>
+          )}
+        />
+      </View>
     </View>
   );
 };
