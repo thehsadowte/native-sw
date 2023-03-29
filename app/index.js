@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import axios from 'axios';
+import Title from './components/Title';
+import { SummaryBlock } from './components/SummaryBlock/SummaryBlock';
 
 const App = () => {
   const BASE_URL = 'https://swapi.dev/api';
@@ -22,9 +24,11 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>This is the starwars API</Text>
+     <Title/>
       <View>
+        <SummaryBlock/>
         <FlatList
+          style={styles.flatlist}
           data={data} // Використання масиву зі стану для відображення даних
           keyExtractor={({ name }) => name.toString()} // Використання toString(), оскільки id - це число
           renderItem={({ item }) => (
@@ -43,6 +47,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 24,
     backgroundColor: '#eaeaea',
+    marginTop: 30
   },
   title: {
     marginTop: 16,
@@ -56,6 +61,11 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
   },
+  flatlist: {
+    padding: 24,
+    backgroundColor: '#eaeaea',
+    marginTop: 30
+  }
 });
 
 export default App;
