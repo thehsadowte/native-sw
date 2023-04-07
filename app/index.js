@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import axios from 'axios';
 import Title from './components/Title';
-import { SummaryBlock } from './components/SummaryBlock/SummaryBlock';
-import  SearchBar  from './components/SearchBar';
+import { SummaryBlock } from './components/SummaryBlock';
+import  SearchBar from './components/SearchBar.jsx';
 
 const App = () => {
   const BASE_URL = 'https://swapi.dev/api';
@@ -34,15 +34,15 @@ const App = () => {
 			<Title />
 			<View>
 				<SummaryBlock />
-				<View style={styles.container}>
-					<Text style={styles.title}>Star Wars Characters</Text>
+				{/* <View style={styles.container}>
+					<Text style={styles.title}>Star Wars Characters</Text> */}
 					<SearchBar
 						value={searchText}
 						onChangeText={setSearchText}
 						onSubmitEditing={handleSearch}
 					/>
 					{/* Add your list of characters here */}
-				</View>
+				{/* </View> */}
 				<FlatList
 					style={styles.flatlist}
 					data={data} // Використання масиву зі стану для відображення даних

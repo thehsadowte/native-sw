@@ -11,18 +11,28 @@ export default function Title() {
 }
 
 const styles = StyleSheet.create({
-    title: {
-        fontSize: 30,
-        color: "rgba(0,0,0,0.9)",
-      },
-      wrapper: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-      },
-      clrBtn: {
-        borderWidth: 1,
-        color: 'red',
-        borderColor: 'color',
-      }
+  title: {
+      fontSize: 30,
+      color: "rgba(0,0,0,0.9)",
+  },
+  wrapper: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+  },
+  clrBtn: {
+      ...Platform.select({
+          ios: {
+              borderColor: 'red',
+              borderWidth: 1,
+              borderRadius: 5,
+              color: 'red',
+          },
+          android: {
+              borderWidth: 1,
+              color: 'red',
+              borderColor: 'color',
+          }
+      }),
+  }
 });
