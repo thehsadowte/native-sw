@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
   title: {
       fontSize: 30,
       color: "rgba(0,0,0,0.9)",
+
   },
   wrapper: {
       display: 'flex',
@@ -27,6 +28,7 @@ const styles = StyleSheet.create({
               borderWidth: 1,
               borderRadius: 5,
               color: 'red',
+              marginRight: 10,
           },
           android: {
               borderWidth: 1,
