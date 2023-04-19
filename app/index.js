@@ -4,6 +4,7 @@ import axios from 'axios';
 import Title from './components/Title';
 import { SummaryBlock } from './components/SummaryBlock';
 import SearchBar from './components/SearchBar.jsx';
+import { DarkTheme } from './components/DarkTheme';
 
 const App = () => {
   const BASE_URL = 'https://swapi.dev/api';
@@ -28,12 +29,13 @@ const App = () => {
     getCharacters();
   }, []);
 
-  const filteredData = data.filter(item =>
+  const filteredData = data.filter((item) =>
     item.name.toLowerCase().includes(searchText.toLowerCase())
   );
 
   return (
     <SafeAreaView style={styles.container}>
+      {/* <DarkTheme /> */}
       <Title />
       <View>
         <SummaryBlock />
